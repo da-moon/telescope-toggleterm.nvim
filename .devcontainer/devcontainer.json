@@ -1,0 +1,51 @@
+{
+  "name": "telescope-toggleterm",
+	"dockerFile": "Dockerfile",
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/workspace",
+  "settings": {
+    "files.eol": "\n",
+    "files.exclude": {
+      "**/.vagrant": true,
+      "**/.git": true
+    },
+    "[settings.json]": {
+      "editor.formatOnSave": false
+    },
+    "[devcontainer.json]": {
+      "editor.formatOnSave": false
+    },
+    "terminal.integrated.profiles.linux": {
+      "bash (login)": {
+        "path": "/bin/bash",
+        "args": [
+          "--login"
+        ]
+      }
+    }
+  },
+  "extensions": [
+    "sumneko.lua",
+    "koihik.vscode-lua-format",
+    "editorconfig.editorconfig",
+    "bungcip.better-toml",
+    "mutantdino.resourcemonitor",
+    "EditorConfig.EditorConfig",
+    "kevinkyang.auto-comment-blocks",
+    "ms-azuretools.vscode-docker",
+    "karyfoundation.comment",
+    "wmaurer.change-case",
+    "skellock.just",
+    "chrislajoie.vscode-modelines",
+  ],
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "runArgs": [
+    "--init",
+    "--entrypoint","",
+    "--name","telescope-toggleterm"
+  ],
+  "remoteUser": "vscode",
+  "postCreateCommand": "nvim --version"
+}
