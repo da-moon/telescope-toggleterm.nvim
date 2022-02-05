@@ -1,0 +1,18 @@
+image: alpine/edge
+secrets:
+  - 911a32c9-a8b4-4d41-9fe0-18df25523b2f
+sources:
+  - https://git.sr.ht/~havi/telescope-toggleterm.nvim
+tasks:
+  - validate-gh-fingerprint-and-config-ssh: |
+      tmp_dir=$(mktemp -d -p $HOME)
+      ssh-keyscan -t rsa github.com > $tmp_dir/github_host
+      ssh-keygen -lf $tmp_dir/github_host > $tmp_dir/github_fingerprint
+      grep -R "nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8" $tmp_dir/github_fingerprint
+      cat $tmp_dir/github_host >> ~/.ssh/known_hosts
+      rm -rf $tmp_dir
+      echo -e "Host github.com\n    IdentityFile ~/.ssh/id_rsa\n    IdentitiesOnly yes\n    BatchMode yes\n" >> ~/.ssh/config
+  - mirror-to-github: |
+      cd ~/telescope-toggleterm.nvim
+      git remote add github git@github.com:da-moon/telescope-toggleterm.nvim
+      git push --force --prune github +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/* master
