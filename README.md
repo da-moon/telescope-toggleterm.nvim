@@ -60,6 +60,11 @@ require("telescope-toggleterm").setup {
 }
 ```
 
+## 🗒️ Additional Info
+
+- Main Upstream Repo : [`git.sr.ht`](https://git.sr.ht/~havi/telescope-toggleterm.nvim)
+- Issue Reports and Feature Requests : [`todo.sr.ht`](https://todo.sr.ht/~havi/telescope-toggleterm.nvim)
+
 <div align="center" id="madewithlua">
 
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blue.svg?style=for-the-badge&logo=lua)](https://lua.org)
